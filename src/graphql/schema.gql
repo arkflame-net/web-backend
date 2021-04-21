@@ -23,6 +23,7 @@ input CreateCategoryInput {
 input CreateProductInput {
   brief: String!
   category: String!
+  commands: [String!]!
   description: String!
   name: String!
   price: Float!
@@ -59,16 +60,26 @@ input ItemInput {
 
 type Mutation {
   addRoleToUser(payload: AddRoleUserInput!): User!
+  confirmPayment(payerID: String!, paymentID: String!): Boolean!
   createCategory(payload: CreateCategoryInput!): Category!
   createProduct(payload: CreateProductInput!): Product!
-  createPurchase(payload: CreatePurchaseInput!): Purchase!
+  createPurchase(payload: CreatePurchaseInput!): Payment!
   createRole(payload: CreateRoleInput!): Role!
   createUser(payload: CreateUserInput!): User!
+}
+
+type Payment {
+  _id: ID!
+  method: String!
+  paypalID: String!
+  purchase: Purchase!
+  redirectURL: String!
 }
 
 type Product {
   _id: ID!
   category: String!
+  commands: [String!]!
   description: String!
   name: String!
   price: Float!
@@ -79,7 +90,6 @@ type Purchase {
   _id: ID!
   buyer: String!
   items: [PurchaseItem!]!
-  method: String!
   status: String!
 }
 

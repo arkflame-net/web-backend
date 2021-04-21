@@ -23,6 +23,10 @@ export class Product {
     @Field()
     @Prop({ required: true })
     description: string;
+
+    @Field(() => [String])
+    @Prop({ required: true })
+    commands: string[];
 }
 
 export type ProductDocument = Product & Document;

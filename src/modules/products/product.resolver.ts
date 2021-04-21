@@ -13,10 +13,9 @@ import { GqlRoleGuard } from "../../auth/guards/gql-role.guard";
 export class ProductResolver {
   constructor(private productService: ProductService) {}
 
-  @UseGuards(GqlAuthGuard, GqlRoleGuard(["CREATE_PRODUCT"]))
+  // @UseGuards(GqlAuthGuard, GqlRoleGuard(["CREATE_PRODUCT"]))
   @Mutation(() => Product)
   public async createProduct (
-    @CurrentUser() user: User,
     @Args('payload') payload: CreateProductInput,
   ) {
     return this.productService.createProduct(payload);

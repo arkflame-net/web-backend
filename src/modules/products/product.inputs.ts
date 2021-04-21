@@ -22,4 +22,7 @@ export class CreateProductInput {
 
     @Field(() => String)
     category: string;
+
+    @Field(() => [String])
+    commands: string[];
 }

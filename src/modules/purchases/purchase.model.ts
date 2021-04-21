@@ -19,10 +19,6 @@ export class Purchase {
 
     @Field()
     @Prop({ required: true })
-    method: string;
-
-    @Field()
-    @Prop({ required: true })
     // Id of the user who bought
     buyer: string;
 

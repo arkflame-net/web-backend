@@ -6,13 +6,14 @@ import { PurchaseService } from "./purchase.service";
 import { CreatePurchaseInput } from "./purchase.inputs";
 import { GqlAuthGuard } from 'src/auth/guards/gql-auth.guard';
 import { GqlRoleGuard } from 'src/auth/guards/gql-role.guard';
+import { Payment } from '../payments/payment.model';
 
 @Resolver(() => Purchase)
 export class PurchaseResolver {
   constructor(private PurchaseService: PurchaseService) {}
 
   @Query(() => [Purchase])
-  @UseGuards(GqlAuthGuard, GqlRoleGuard(["VIEW_PENDING_PURCHASES"]))
+  // @UseGuards(GqlAuthGuard, GqlRoleGuard(["VIEW_PENDING_PURCHASES"]))
   public async fetchAllPurchases () {
     return this.PurchaseService.getAll();
   }
@@ -41,7 +42,7 @@ export class PurchaseResolver {
   }
 
   @UseGuards(GoogleRecaptchaGuard)
-  @Mutation(() => Purchase)
+  @Mutation(() => Payment)
   public async createPurchase (
     @Args('payload') payload: CreatePurchaseInput,
   ) {
