@@ -16,3 +16,10 @@ export class CreateCategoryInput {
     @IsAlphanumeric()
     shrug: string;
 }
+
+@InputType()
+export class RemoveCategoryInput {
+    @Field(() => String)
+    @Length(1, 32)
+    id: string;
+}

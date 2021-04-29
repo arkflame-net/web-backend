@@ -36,4 +36,10 @@ export class CategoryService {
     const category = new this.categoryModel(payload);
     return category.save();
   }
+
+  public removeCategory (payload): Promise<Category> {
+    const id = payload.id;
+
+    return this.categoryModel.findByIdAndDelete({ id }).exec();
+  }
 }

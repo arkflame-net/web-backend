@@ -2,7 +2,7 @@ import { NotFoundException, UseGuards } from '@nestjs/common';
 import { Args, Resolver, Query, Mutation } from '@nestjs/graphql';
 import { Category } from './category.model';
 import { CategoryService } from "./category.service";
-import { CreateCategoryInput } from "./category.inputs";
+import { CreateCategoryInput, RemoveCategoryInput } from "./category.inputs";
 import { GqlAuthGuard } from 'src/auth/guards/gql-auth.guard';
 import { GqlRoleGuard } from 'src/auth/guards/gql-role.guard';
 
@@ -45,5 +45,12 @@ export class CategoryResolver {
     @Args('payload') payload: CreateCategoryInput,
   ) {
     return this.categoryService.createCategory(payload);
+  }
+
+  @Mutation(() => Category)
+  public async removeCategory (
+    @Args('payload') payload: RemoveCategoryInput,
+  ) {
+    return this.categoryService.removeCategory(payload);
   }
 }

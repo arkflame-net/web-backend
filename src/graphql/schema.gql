@@ -21,7 +21,7 @@ input CreateCategoryInput {
 }
 
 input RemoveCategoryInput {
-  name: String!
+  id: String!
 }
 
 input CreateProductInput {
@@ -34,7 +34,7 @@ input CreateProductInput {
 }
 
 input RemoveProductInput {
-  name: String!
+  id: String!
 }
 
 input CreatePurchaseInput {
