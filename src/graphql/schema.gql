@@ -20,6 +20,10 @@ input CreateCategoryInput {
   shrug: String!
 }
 
+input RemoveCategoryInput {
+  name: String!
+}
+
 input CreateProductInput {
   brief: String!
   category: String!
@@ -27,6 +31,10 @@ input CreateProductInput {
   description: String!
   name: String!
   price: Float!
+}
+
+input RemoveProductInput {
+  name: String!
 }
 
 input CreatePurchaseInput {
