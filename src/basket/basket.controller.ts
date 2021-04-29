@@ -2,7 +2,7 @@ import { Request } from 'express';
 import { Controller, Post, Req, BadRequestException } from '@nestjs/common';
 import { ProductService } from "../modules/products/product.service";
 
-@Controller("rest/basket")
+@Controller("basket")
 export class BasketController {
     constructor(
         private readonly productService: ProductService
