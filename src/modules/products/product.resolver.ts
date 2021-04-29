@@ -3,7 +3,7 @@ import { Args, Resolver, Query, Mutation } from '@nestjs/graphql';
 import { Product } from './product.model';
 import { ProductService } from "./product.service";
 
-import { CreateProductInput } from "./product.inputs";
+import { CreateProductInput, RemoveProductInput } from "./product.inputs";
 import { GqlAuthGuard } from 'src/auth/guards/gql-auth.guard';
 import { CurrentUser } from 'src/auth/current-user.decorator';
 import { User } from '../user/user.model';
@@ -26,5 +26,12 @@ export class ProductResolver {
     @Args('category') category: string,
   ) {
     return this.productService.getAllByCategory(category);
+  }
+
+  @Mutation(() => Product)
+  public async removeProduct (
+    @Args('payload') payload: RemoveProductInput,
+  ) {
+    return this.productService.removeProduct(payload);
   }
 }

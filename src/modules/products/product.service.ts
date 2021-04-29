@@ -34,4 +34,9 @@ export class ProductService {
     const product = new this.productModel(payload);
     return product.save();
   }
+
+  public removeProduct (payload): Promise<Product> {
+    const id = payload.id
+    return this.productModel.findByIdAndDelete({id}).exec();
+  }
 }

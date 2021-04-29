@@ -26,3 +26,9 @@ export class CreateProductInput {
     @Field(() => [String])
     commands: string[];
 }
+
+@InputType()
+export class RemoveProductInput {
+    @Field(() => String)
+    id: string;
+}
