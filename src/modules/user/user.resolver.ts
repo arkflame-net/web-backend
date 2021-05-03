@@ -18,7 +18,6 @@ export class UserResolver {
   }
 
   @Mutation(() => User)
-  @UseGuards(GqlAuthGuard, GqlRoleGuard(["CREATE_USER"]))
   public createUser (
     @Args('payload') payload: CreateUserInput,
   ) {
