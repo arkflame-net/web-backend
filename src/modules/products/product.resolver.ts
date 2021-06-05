@@ -27,4 +27,18 @@ export class ProductResolver {
   ) {
     return this.productService.getAllByCategory(category);
   }
+
+  @Query(() => [Product])
+  public async fetchProductById (
+    @Args('id') id: string,
+  ) {
+    return this.productService.getByID(id);
+  }
+
+  @Query(() => [Product])
+  public async fetchProductsById (
+    @Args('id') id: string,
+  ) {
+    return this.productService.getAllByID(id);
+  }
 }

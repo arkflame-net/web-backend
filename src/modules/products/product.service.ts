@@ -30,6 +30,10 @@ export class ProductService {
     return this.queryAll({ category });
   }
 
+  public getAllByID (_id: string): Promise<Product[]> {
+    return this.queryAll({ _id });
+  }
+
   public createProduct (payload): Promise<Product> {
     const product = new this.productModel(payload);
     return product.save();
