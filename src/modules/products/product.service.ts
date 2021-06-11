@@ -18,6 +18,10 @@ export class ProductService {
     return this.productModel.find(payload).exec();
   }
 
+  public queryManyByID (ids: String[]): Promise<Product[]> {
+    return this.productModel.find({ '_id': { $in: ids } }).exec();
+  }
+
   public getAll (): Promise<Product[]> {
     return this.queryAll({});
   }

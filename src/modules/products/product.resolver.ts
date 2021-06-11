@@ -22,6 +22,13 @@ export class ProductResolver {
   }
 
   @Query(() => [Product])
+  public async fetchManyProductsByID (
+    @Args({ name: 'ids', type: () => [String] }) ids: String[],
+  ) {
+    return this.productService.queryManyByID(ids);
+  }
+
+  @Query(() => [Product])
   public async fetchProductsByCategory (
     @Args('category') category: string,
   ) {
@@ -40,5 +47,10 @@ export class ProductResolver {
     @Args('id') id: string,
   ) {
     return this.productService.getAllByID(id);
+  }
+
+  @Query(() => [Product])
+  public async fetchAllProducts () {
+    return this.productService.getAll();
   }
 }
